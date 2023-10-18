@@ -1,19 +1,19 @@
-# user-children-form
+#  Форма для заполнения информации о пользователе и детях
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Версия node.js: v18.15.0
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Версия npm: 9.6.2
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Демо
+<!-- https://kanban-beige-xi.vercel.app/ -->
+
+<img width="603" alt="user-children-form" src="https://github.com/DieReiterin/user-children-form/blob/main/src/assets/user-children-form.png">
+
+
+
+
+## Локальный запуск
+#### `npm run serve`
+#### `http://localhost:8080/`
