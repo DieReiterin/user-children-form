@@ -1,13 +1,15 @@
 <template>
   <div class="header">
-    <div class="header__links">
-      <p class="header__link">
-        <router-link to="/form" style="text-decoration: none; color: inherit;">
-          Форма</router-link>
+    <div class="header__links"> 
+      <p 
+          @click="$router.push('/form')" 
+          class="header__link"
+          >Форма
       </p>
-      <p class="header__link">
-        <router-link to="/preview" style="text-decoration: none; color: inherit;">
-          Превью</router-link>
+      <p 
+          @click="$router.push('/preview')" 
+          class="header__link"
+          >Превью
       </p>
     </div>
   </div>
@@ -58,6 +60,7 @@ export default {
   line-height: 76px;
   color: rgba(17, 17, 17, 0.48);
   margin-right: 20px;
+  cursor: pointer;
 }
 .main__wrapper {
   display: flex;

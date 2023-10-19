@@ -14,25 +14,28 @@
           <my-label>Имя</my-label>
           <my-input 
               v-model="this.useStore.user.name" 
-              wide="true"></my-input>
+              wide="true" type="text"></my-input>
         </div>
         <div class="wrapper">
           <my-label>Возраст</my-label>
           <my-input 
               v-model="this.useStore.user.age" 
-              wide="true"></my-input>          
+              wide="true" type="number"></my-input>          
         </div>
       </div>
     </div>
     <div class="children">
       <div v-if="page === 'preview'">
         <p class="title">Дети</p>
-        <p 
-            v-for="child in this.useStore.previewChildren" 
-            class="child__preview" 
-            :key="child.id"
-            >{{ child.name }}, {{ child.age }} лет
-        </p>
+        <template v-for="child in this.useStore.previewChildren">
+          <p               
+              v-if="childHandler(child)" 
+              class="child__preview" 
+              :key="child.id"
+              >{{ child.name }}, {{ child.age }} лет
+          </p>
+          
+        </template>
       </div>
       <div v-if="page === 'form'">
           <div class="children__upper">
@@ -56,7 +59,8 @@
           </my-child>
           <my-button 
               @click="saveChanges" 
-              buttonType="save">Сохранить
+              buttonType="save"
+              :saveBtnClicked="saveBtnClicked">Сохранить
           </my-button>        
           </div>
       </div>
@@ -72,6 +76,7 @@ export default {
   },
   data(){
           return {
+            saveBtnClicked: false,
       }
     },
     props: ['page'],
@@ -91,10 +96,14 @@ export default {
       saveChanges() {
         this.useStore.previewUser = this.useStore.user;
         this.useStore.previewChildren = this.useStore.children;
+        this.saveBtnClicked = true;
       },
       userHandler() {
         return this.useStore.previewUser.name !== '' && this.useStore.previewUser.age !== '' ? 
-        `${this.useStore.previewUser.name}, ${this.useStore.previewUser.age} лет` : 'Не указано имя либо возраст пользвателя'
+        `${this.useStore.previewUser.name}, ${this.useStore.previewUser.age} лет` : 'Не указано имя либо возраст пользoвателя'
+      },
+      childHandler(child) {
+        return child.name !== '' && child.age !== ''
       }
     },
     setup(){

@@ -2,14 +2,14 @@
     <input 
         :value="modelValue" 
         @input="updateInput" 
-        type="text" class="input" 
+        :type="type" class="input" 
         :class="{'wide': wide === 'true',}"
     >
 </template>
 <script>
 export default {
     name: 'my-input',
-    props: ['child', 'modelValue', 'wide'],
+    props: ['modelValue', 'wide', 'type'],
     methods: {
         updateInput(event) {
             this.$emit('update:modelValue', event.target.value)

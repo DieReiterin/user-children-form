@@ -1,9 +1,11 @@
 <template>
+
     <button class="button" :class="{
         'add': buttonType === 'add', 
         'delete': buttonType === 'delete',
         'save': buttonType === 'save',}"
     ><slot></slot></button>
+        
 </template>
 <script>
 export default {
@@ -12,12 +14,13 @@ export default {
         buttonType: {
             type: String,
             default: 'save',
-        }
+        },
     }
 }
 </script>
 <style scoped>
 .button {
+    position: relative;
     min-width: 60px;
     max-width: 164px;
     height: 100%;
@@ -34,10 +37,19 @@ export default {
     background-color: rgb(1, 167, 253);
 }
 .delete {
-    background-color: red;
-    
+    background-color: red;    
 }
 .save {
     background-color: lightgreen;
+}
+.save:focus::after {
+    position: absolute;
+    top: 22%;
+    left: 110%;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: transparent no-repeat center center / cover;
+    background-image: url(@/assets/ok.png);
 }
 </style>
